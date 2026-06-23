@@ -1,14 +1,14 @@
 import os
+import sys
 from colorama import Fore, Style, init
 
-# Inicialização
 init(autoreset=True)
 ROXO = Fore.MAGENTA + Style.BRIGHT
 BRANCO = Fore.WHITE
 RESET = Style.RESET_ALL
 
 def banner():
-    # O os.system('clear') garante que tudo antes seja limpo
+    # Limpa a tela uma única vez aqui
     os.system('clear')
     print(ROXO + """
     ██████╗ ███████╗███╗   ███╗ ██████╗ ███╗   ██╗██╗ ██████╗ 
@@ -18,16 +18,23 @@ def banner():
     ██████╔╝███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██║╚██████╔╝
     ╚═════╝ ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝ ╚═════╝ 
     """)
-    # Saudação personalizada removendo o 'Mod fatal'
     print(BRANCO + "Quem gostaria que eu conceda a visão, mestre CM_FX?\n")
 
 def main():
-    # Limpa a tela imediatamente ao iniciar
-    os.system('clear')
+    # Chama o banner logo de cara
+    banner()
     
     while True:
-        banner()
+        # Mostra as opções
         print(f"{ROXO}[1] Caçar Social [2] Rastrear IP [3] Ver Histórico [0] Sair")
         opt = input(f"{ROXO}>> ")
         
-        # ... resto do seu código ...
+        if opt == '1':
+            target = input(f"{ROXO}Username: ")
+            # ... resto do código ...
+            input("\n[!] Pressione Enter para voltar ao menu...")
+            banner() # Limpa e redesenha o banner após a ação
+            
+        elif opt == '0':
+            print(f"{ROXO}O Demônio fecha os olhos.")
+            sys.exit()
